@@ -1155,7 +1155,8 @@ async function loadLazy(doc) {
   loadHeader(header);
   loadFooter(doc.querySelector('footer'));
 
-    document.querySelector('.button.accent').style.backgroundColor = 'red'
+  document.querySelector('.button.accent').style.backgroundColor = 'red'
+  document.querySelector('.button.accent.light').style.backgroundColor = 'blue'
   document.querySelector('h1').style.color = 'red';
   
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
