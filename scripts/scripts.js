@@ -789,10 +789,7 @@ document.addEventListener('click', (event) => {
     source: sampleRUM.sourceselector(event.target),
   });
 });
-var sources = document.querySelector("picture").querySelectorAll("source");
-sources.forEach(function(source) {
-source.setAttribute("srcset", "https://wallup.net/wp-content/uploads/2018/03/19/580136-portrait_display-vertical-pattern-digital_art-748x1330.jpg");
-});
+
 if (!window.hlx.suppressLoadPage) loadPage(document);
 
 export function formatDate(dateString) {
@@ -1116,7 +1113,11 @@ async function loadEager(doc) {
     const { runExperiment } = await import('./experimentation.js');
     await runExperiment(experiment, instantExperiment);
   }
-
+  var sources = document.querySelector("picture").querySelectorAll("source");
+  sources.forEach(function(source) {
+  source.setAttribute("srcset", "https://wallup.net/wp-content/uploads/2018/03/19/580136-portrait_display-vertical-pattern-digital_art-748x1330.jpg");
+  });
+  
   if (!window.hlx.lighthouse) loadMartech();
 
   decorateTemplateAndTheme();
