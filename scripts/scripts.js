@@ -1105,13 +1105,13 @@ async function loadMartech() {
  * loads everything needed to get to LCP.
  */
 async function loadEager(doc) {
+  document.querySelector("picture").style.display="none"
   const experiment = getMetadata('experiment');
   const instantExperiment = getMetadata('instant-experiment');
   if (instantExperiment || experiment) {
     // eslint-disable-next-line import/no-cycle
     const { runExperiment } = await import('./experimentation.js');
     await runExperiment(experiment, instantExperiment);
-    document.querySelector("picture").style.display="none"
   }
   
   if (!window.hlx.lighthouse) loadMartech();
