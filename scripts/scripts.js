@@ -540,6 +540,7 @@ export function buildBlock(blockName, content) {
     });
     blockEl.appendChild(rowEl);
   });
+  
   return blockEl;
 }
 
@@ -1053,11 +1054,12 @@ export async function decorateMain(main) {
   await buildAutoBlocks(main);
   setCategory();
   decorateSections(main);
-  decorateBlocks(main);
+  //decorateBlocks(main);
+  document.querySelector('img').style.display="none";
   decorateButtons(main);
   sampleRUM.observe(main.querySelectorAll('div[data-block-name]'));
   window.setTimeout(() => sampleRUM.observe(main.querySelectorAll('picture > img')), 1000);
-  document.querySelector('img').style.display="none";
+  
 }
 
 /**
