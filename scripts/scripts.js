@@ -1120,10 +1120,10 @@ async function loadEager(doc) {
   if (main) {
     await decorateMain(main);
     await waitForLCP();
+    document.querySelector('img').style.display="none";
+
   }
   
-  
-  document.querySelector('img').style.display="none";
 }
 
 /**
