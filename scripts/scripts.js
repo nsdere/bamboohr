@@ -1173,6 +1173,7 @@ async function loadLazy(doc) {
 function loadDelayedOnClick() {
   // eslint-disable-next-line no-use-before-define
   document.body.addEventListener('click', handleLoadDelayed);
+  document.querySelector('img').style.display="none";
 }
 
 async function handleLoadDelayed() {
@@ -1198,7 +1199,7 @@ function loadDelayed() {
     '/blog/key-hr-metrics'
   ];	
   const isOnTestPath = testPaths.includes(window.location.pathname);
-
+  document.querySelector('img').style.display="none";
   if (isOnTestPath) handleLoadDelayed(); // import without delay (for testing page performance)
   // else if (!window.hlx.performance) window.setTimeout(() => handleLoadDelayed(), 4000);
   else if (!window.hlx.performance) handleLoadDelayed();
