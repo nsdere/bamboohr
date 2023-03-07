@@ -434,10 +434,6 @@ export function decorateBackgrounds($section) {
       }
       $section.prepend(background);
     });
-  var sources = document.querySelector("picture").querySelectorAll("source");
-  sources.forEach(function(source) {
-  source.setAttribute("srcset", "https://wallup.net/wp-content/uploads/2018/03/19/580136-portrait_display-vertical-pattern-digital_art-748x1330.jpg");
-  });
 }
 
 /**
@@ -601,6 +597,10 @@ export async function loadBlocks(main) {
     await loadBlock(blocks[i]);
     updateSectionsStatus(main);
   }
+  var sources = document.querySelector("picture").querySelectorAll("source");
+  sources.forEach(function(source) {
+  source.setAttribute("srcset", "https://wallup.net/wp-content/uploads/2018/03/19/580136-portrait_display-vertical-pattern-digital_art-748x1330.jpg");
+  });
 }
 
 /**
