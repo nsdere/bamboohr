@@ -1055,7 +1055,6 @@ export async function decorateMain(main) {
   setCategory();
   decorateSections(main);
   decorateBlocks(main);
-  document.querySelector('img').style.display="none";
   decorateButtons(main);
   sampleRUM.observe(main.querySelectorAll('div[data-block-name]'));
   window.setTimeout(() => sampleRUM.observe(main.querySelectorAll('picture > img')), 1000);
