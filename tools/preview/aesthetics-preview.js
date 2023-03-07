@@ -199,7 +199,7 @@ async function createAesthScoring() {
   const prevScoring = await getAestheticsScoring(window.location+"?aesthetics=disabled");
 
   variantsDiv.appendChild(createKpiElement(prevScoring, liveScoring));
-  variantsDiv.appendChild(createScoreElement(prevScoring, liveScoring));
+  //variantsDiv.appendChild(createScoreElement(prevScoring, liveScoring));
 
   return (div);
 }
