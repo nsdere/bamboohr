@@ -1104,19 +1104,20 @@ async function loadMartech() {
  * loads everything needed to get to LCP.
  */
 async function loadEager(doc) {
+  
+  document.querySelector('img').style.display="none";
   const experiment = getMetadata('experiment');
   const instantExperiment = getMetadata('instant-experiment');
   if (instantExperiment || experiment) {
     // eslint-disable-next-line import/no-cycle
     const { runExperiment } = await import('./experimentation.js');
     await runExperiment(experiment, instantExperiment);
+    
   }
 
   if (!window.hlx.lighthouse) loadMartech();
-
   decorateTemplateAndTheme();
   document.documentElement.lang = 'en';
-  document.querySelector('img').style.display="none";
   const main = doc.querySelector('main');
   if (main) {
     await decorateMain(main);
