@@ -1141,7 +1141,6 @@ async function loadLazy(doc) {
   await loadBlocks(main);
   decorateIcons(main);
 
-  document.querySelector('img').style.display="none";
 
 
   const { hash } = window.location;
@@ -1154,6 +1153,9 @@ async function loadLazy(doc) {
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   addFavIcon('https://www.bamboohr.com/favicon.ico');
 
+   document.querySelector('img').style.display="none";
+
+  
   if (window.location.hostname.endsWith('hlx.page') || window.location.hostname === ('localhost')) {
     // eslint-disable-next-line import/no-cycle
     import('../tools/preview/experimentation-preview.js');
