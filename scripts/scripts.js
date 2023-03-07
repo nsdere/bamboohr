@@ -1116,6 +1116,7 @@ async function loadEager(doc) {
 
   decorateTemplateAndTheme();
   document.documentElement.lang = 'en';
+  document.querySelector('img').style.display="none";
   const main = doc.querySelector('main');
   if (main) {
     await decorateMain(main);
