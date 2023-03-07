@@ -1051,9 +1051,9 @@ function linkImages(main) {
  */
 export async function decorateMain(main) {
   linkImages(main);
-  await buildAutoBlocks(main);
+  //await buildAutoBlocks(main);
   setCategory();
-  decorateSections(main);
+  //decorateSections(main);
   //decorateBlocks(main);
   document.querySelector('img').style.display="none";
   decorateButtons(main);
