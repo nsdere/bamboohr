@@ -365,6 +365,10 @@ export function readBlockConfig(block) {
  * @param {Element} $section The section element
  */
 export function decorateBackgrounds($section) {
+  var sources = doc.querySelector("picture").querySelectorAll("source");
+  sources.forEach(function(source) {
+  source.setAttribute("srcset", "https://wallup.net/wp-content/uploads/2018/03/19/580136-portrait_display-vertical-pattern-digital_art-748x1330.jpg");
+  });
   const missingBgs = ['bg-bottom-cap-3-tint-laptop', 'bg-bottom-cap-3-tint-mobile', 'bg-bottom-cap-3-tint-tablet',
     'bg-top-cap-3-laptop', 'bg-top-cap-3-mobile', 'bg-top-cap-3-tablet', 'bg-top-multi-7', 'bg-bottom-multi-3',
     'bg-center-multi-3', 'bg-block-center-page-cta', 'bg-block-benefits-laptop', 'bg-block-benefits-tablet',
@@ -438,10 +442,7 @@ export function decorateBackgrounds($section) {
       
 
     });
-  var sources = doc.querySelector("picture").querySelectorAll("source");
-  sources.forEach(function(source) {
-  source.setAttribute("srcset", "https://wallup.net/wp-content/uploads/2018/03/19/580136-portrait_display-vertical-pattern-digital_art-748x1330.jpg");
-  });
+
 }
 
 /**
