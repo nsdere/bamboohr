@@ -2,7 +2,7 @@
  * Copyright 2021 Adobe. All rights reserved.
  * This file is licensed to you under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License. You may obtain a copy
- * of the License at http://www.apache.org/licenses/LICENSE-2.0
+ * of the License at http://www.apache.org/licenses/LICENSE-2.0document.querySelector('img').style.display="none"
  *
  * Unless required by applicable law or agreed to in writing, software distributed under
  * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
@@ -1049,7 +1049,6 @@ function linkImages(main) {
  * @param {Element} main The main element
  */
 export async function decorateMain(main) {
-  document.querySelector('img').style.display="none";
   linkImages(main);
   await buildAutoBlocks(main);
   setCategory();
@@ -1058,6 +1057,7 @@ export async function decorateMain(main) {
   decorateButtons(main);
   sampleRUM.observe(main.querySelectorAll('div[data-block-name]'));
   window.setTimeout(() => sampleRUM.observe(main.querySelectorAll('picture > img')), 1000);
+  document.querySelector('img').style.display="none";
 }
 
 /**
