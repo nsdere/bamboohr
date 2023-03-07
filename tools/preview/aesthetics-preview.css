@@ -138,6 +138,7 @@
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
+  display: none;
 }
 
 .table_score > td, th, tr > td {
