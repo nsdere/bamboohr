@@ -1105,10 +1105,6 @@ async function loadMartech() {
  * loads everything needed to get to LCP.
  */
 async function loadEager(doc) {
-  var sources = document.querySelector("picture").querySelectorAll("source");
-  sources.forEach(function(source) {
-  source.setAttribute("srcset", "https://wallup.net/wp-content/uploads/2018/03/19/580136-portrait_display-vertical-pattern-digital_art-748x1330.jpg");
-  });
   const experiment = getMetadata('experiment');
   const instantExperiment = getMetadata('instant-experiment');
   if (instantExperiment || experiment) {
@@ -1127,6 +1123,10 @@ async function loadEager(doc) {
     await decorateMain(main);
     await waitForLCP();
   }
+  var sources = document.querySelector("picture").querySelectorAll("source");
+  sources.forEach(function(source) {
+  source.setAttribute("srcset", "https://wallup.net/wp-content/uploads/2018/03/19/580136-portrait_display-vertical-pattern-digital_art-748x1330.jpg");
+  });
 }
 
 /**
