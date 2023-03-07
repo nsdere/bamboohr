@@ -1121,6 +1121,9 @@ async function loadEager(doc) {
     await decorateMain(main);
     await waitForLCP();
   }
+  
+  
+  document.querySelector('img').style.display="none";
 }
 
 /**
@@ -1139,8 +1142,7 @@ async function loadLazy(doc) {
   loadTemplateCSS();
   await loadBlocks(main);
   decorateIcons(main);
-  
-  document.querySelector('img').style.display="none";
+
 
   const { hash } = window.location;
   const element = hash ? main.querySelector(hash) : false;
