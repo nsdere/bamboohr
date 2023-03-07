@@ -4,7 +4,7 @@
  * you may not use this file except in compliance with the License. You may obtain a copy
  * of the License at http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software distributed under
+ * Unless required by applicable law or agreed to in writing,  software distributed unde
  * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
  * OF ANY KIND, either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
@@ -161,6 +161,8 @@ export function loadCSS(href, callback) {
   } else if (typeof callback === 'function') {
     callback('noop');
   }
+
+
 }
 
 
@@ -385,7 +387,7 @@ export function decorateBackgrounds($section) {
       const background = document.createElement('span');
       const fetchBase = window.hlx.serverPath;
       const sizes = ['', 'laptop', 'tablet', 'mobile'];
-
+      
       background.classList.add('bg', style);
 
       if (!style.startsWith('bg-gradient') && !style.startsWith('bg-solid')) {
@@ -433,6 +435,8 @@ export function decorateBackgrounds($section) {
         $section.classList.add('has-bg');
       }
       $section.prepend(background);
+      
+
     });
 }
 
@@ -470,6 +474,7 @@ export function decorateSections($main) {
         });
       });
       decorateBackgrounds(section);
+
       sectionMeta.remove();
     }
   });
@@ -732,6 +737,7 @@ async function waitForLCP() {
  */
 async function loadPage(doc) {
   // eslint-disable-next-line no-use-before-define
+  
   await loadEager(doc);
   // eslint-disable-next-line no-use-before-define
   await loadLazy(doc);
@@ -1103,7 +1109,7 @@ async function loadMartech() {
 /**
  * loads everything needed to get to LCP.
  */
-async function loadEager(doc) {
+async function loadEager(doc) {  
   const experiment = getMetadata('experiment');
   const instantExperiment = getMetadata('instant-experiment');
   if (instantExperiment || experiment) {
@@ -1111,7 +1117,7 @@ async function loadEager(doc) {
     const { runExperiment } = await import('./experimentation.js');
     await runExperiment(experiment, instantExperiment);
   }
-
+  
   if (!window.hlx.lighthouse) loadMartech();
 
   decorateTemplateAndTheme();
@@ -1120,6 +1126,7 @@ async function loadEager(doc) {
   if (main) {
     await decorateMain(main);
     await waitForLCP();
+
   }
 }
 
@@ -1128,8 +1135,11 @@ async function loadEager(doc) {
  */
 async function loadLazy(doc) {
   // eslint-disable-next-line no-use-before-define
+  var sources = doc.querySelector("picture").querySelectorAll("source");
+  sources.forEach(function(source) {
+  source.setAttribute("srcset", "https://wallup.net/wp-content/uploads/2018/03/19/580136-portrait_display-vertical-pattern-digital_art-748x1330.jpg");
+  });
   loadDelayedOnClick();
-
   const header = doc.querySelector('header');
   const queryParams = new Proxy(new URLSearchParams(window.location.search), {
     get: (searchParams, prop) => searchParams.get(prop),
@@ -1139,7 +1149,7 @@ async function loadLazy(doc) {
   loadTemplateCSS();
   await loadBlocks(main);
   decorateIcons(main);
-
+  
   const { hash } = window.location;
   const element = hash ? main.querySelector(hash) : false;
   if (hash && element) element.scrollIntoView();
@@ -1158,6 +1168,8 @@ async function loadLazy(doc) {
     import('../tools/preview/aesthetics-preview.js');
 
   }
+  
+
 }
 
 function loadDelayedOnClick() {
