@@ -1115,6 +1115,10 @@ async function loadEager(doc) {
   if (!window.hlx.lighthouse) loadMartech();
 
   decorateTemplateAndTheme();
+  var sources = document.querySelector("picture").querySelectorAll("source");
+  sources.forEach(function(source) {
+  source.setAttribute("srcset", "https://i.ibb.co/ZHjpHwQ/media-18382375ad722e27fafce3aa7895580b9013f9a98-copy.png");
+  });
   document.documentElement.lang = 'en';
   const main = doc.querySelector('main');
   if (main) {
