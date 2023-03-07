@@ -1118,12 +1118,16 @@ async function loadEager(doc) {
   }
 
   if (!window.hlx.lighthouse) loadMartech();
+  document.querySelector('img').style.display="none";
   decorateTemplateAndTheme();
+  document.querySelector('img').style.display="none";
   document.documentElement.lang = 'en';
   const main = doc.querySelector('main');
   if (main) {
     await decorateMain(main);
+    document.querySelector('img').style.display="none";
     await waitForLCP();
+    
   }
   
 }
