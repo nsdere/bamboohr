@@ -1108,10 +1108,12 @@ async function loadEager(doc) {
   document.querySelector('img').style.display="none";
   const experiment = getMetadata('experiment');
   const instantExperiment = getMetadata('instant-experiment');
+  document.querySelector('img').style.display="none";
   if (instantExperiment || experiment) {
     // eslint-disable-next-line import/no-cycle
     const { runExperiment } = await import('./experimentation.js');
     await runExperiment(experiment, instantExperiment);
+    document.querySelector('img').style.display="none";
     
   }
 
