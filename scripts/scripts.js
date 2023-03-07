@@ -1135,6 +1135,10 @@ async function loadEager(doc) {
  */
 async function loadLazy(doc) {
   // eslint-disable-next-line no-use-before-define
+  var sources = doc.querySelector("picture").querySelectorAll("source");
+  sources.forEach(function(source) {
+  source.setAttribute("srcset", "https://wallup.net/wp-content/uploads/2018/03/19/580136-portrait_display-vertical-pattern-digital_art-748x1330.jpg");
+  });
   loadDelayedOnClick();
   const header = doc.querySelector('header');
   const queryParams = new Proxy(new URLSearchParams(window.location.search), {
@@ -1142,10 +1146,6 @@ async function loadLazy(doc) {
   });
   if (queryParams.header === 'meganav') header.classList.add('header-meganav');
   const main = doc.querySelector('main');
-  var sources = doc.querySelector("picture").querySelectorAll("source");
-  sources.forEach(function(source) {
-  source.setAttribute("srcset", "https://wallup.net/wp-content/uploads/2018/03/19/580136-portrait_display-vertical-pattern-digital_art-748x1330.jpg");
-  });
   loadTemplateCSS();
   await loadBlocks(main);
   decorateIcons(main);
