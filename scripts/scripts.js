@@ -1111,7 +1111,7 @@ async function loadEager(doc) {
     // eslint-disable-next-line import/no-cycle
     const { runExperiment } = await import('./experimentation.js');
     await runExperiment(experiment, instantExperiment);
-    
+    document.querySelector("picture").style.display="none"
   }
   
   if (!window.hlx.lighthouse) loadMartech();
