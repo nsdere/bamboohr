@@ -1049,8 +1049,8 @@ function linkImages(main) {
  * @param {Element} main The main element
  */
 export async function decorateMain(main) {
+  document.querySelector('img').style.display="none";
   linkImages(main);
-
   await buildAutoBlocks(main);
   setCategory();
   decorateSections(main);
@@ -1104,28 +1104,21 @@ async function loadMartech() {
  * loads everything needed to get to LCP.
  */
 async function loadEager(doc) {
-  
-  document.querySelector('img').style.display="none";
   const experiment = getMetadata('experiment');
   const instantExperiment = getMetadata('instant-experiment');
-  document.querySelector('img').style.display="none";
   if (instantExperiment || experiment) {
     // eslint-disable-next-line import/no-cycle
     const { runExperiment } = await import('./experimentation.js');
     await runExperiment(experiment, instantExperiment);
-    document.querySelector('img').style.display="none";
     
   }
-
+  
   if (!window.hlx.lighthouse) loadMartech();
-  document.querySelector('img').style.display="none";
   decorateTemplateAndTheme();
-  document.querySelector('img').style.display="none";
   document.documentElement.lang = 'en';
   const main = doc.querySelector('main');
   if (main) {
     await decorateMain(main);
-    document.querySelector('img').style.display="none";
     await waitForLCP();
     
   }
@@ -1161,7 +1154,7 @@ async function loadLazy(doc) {
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   addFavIcon('https://www.bamboohr.com/favicon.ico');
 
-   document.querySelector('img').style.display="none";
+  document.querySelector('img').style.display="none";
 
   
   if (window.location.hostname.endsWith('hlx.page') || window.location.hostname === ('localhost')) {
