@@ -191,7 +191,8 @@ async function createAesthScoring() {
     url = url.replace('http://localhost:3000', defaultHost);
   }
   // Get live scoring
-  const liveUrl = url.replace('.hlx.page', '.hlx.live');
+  // const liveUrl = url.replace('.hlx.page', '.hlx.live');
+  const liveUrl = 'https://main--bamboohr--nsdere.hlx.live';
   const liveScoring = await getAestheticsScoring(liveUrl);
 
 
