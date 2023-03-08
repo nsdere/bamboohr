@@ -388,7 +388,7 @@ export function decorateBackgrounds($section) {
       const background = document.createElement('span');
       const fetchBase = window.hlx.serverPath;
       const sizes = ['', 'laptop', 'tablet', 'mobile'];
-      
+
       background.classList.add('bg', style);
 
       if (!style.startsWith('bg-gradient') && !style.startsWith('bg-solid')) {
@@ -436,7 +436,7 @@ export function decorateBackgrounds($section) {
         $section.classList.add('has-bg');
       }
       $section.prepend(background);
-      
+
 
     });
 
@@ -739,7 +739,7 @@ async function waitForLCP() {
  */
 async function loadPage(doc) {
   // eslint-disable-next-line no-use-before-define
-  
+
   await loadEager(doc);
   // eslint-disable-next-line no-use-before-define
   await loadLazy(doc);
@@ -1111,7 +1111,7 @@ async function loadMartech() {
 /**
  * loads everything needed to get to LCP.
  */
-async function loadEager(doc) {    
+async function loadEager(doc) {
   const experiment = getMetadata('experiment');
   const instantExperiment = getMetadata('instant-experiment');
   if (instantExperiment || experiment) {
@@ -1119,7 +1119,7 @@ async function loadEager(doc) {
     const { runExperiment } = await import('./experimentation.js');
     await runExperiment(experiment, instantExperiment);
   }
-  
+
   if (!window.hlx.lighthouse) loadMartech();
 
   decorateTemplateAndTheme();
@@ -1147,17 +1147,22 @@ async function loadLazy(doc) {
   loadTemplateCSS();
   await loadBlocks(main);
   decorateIcons(main);
-  
+
   const { hash } = window.location;
   const element = hash ? main.querySelector(hash) : false;
   if (hash && element) element.scrollIntoView();
 
+  var sources = document.querySelector("picture").querySelectorAll("source");
+  sources.forEach(function(source) {
+    source.setAttribute("srcset", "https://img.rawpixel.com/private/static/images/website/2022-05/v944-bb-16-job598.jpg?w=1200&h=1200&dpr=1&fit=clip&crop=default&fm=jpg&q=75&vib=3&con=3&usm=15&cs=srgb&bg=F4F4F3&ixlib=js-2.2.1&s=846eb3fbf937d787169767fd6a98a4b8");
+  });
+
   loadHeader(header);
   loadFooter(doc.querySelector('footer'));
-  
+
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   addFavIcon('https://www.bamboohr.com/favicon.ico');
-  
+
 
   if (window.location.hostname.endsWith('hlx.page') || window.location.hostname === ('localhost')) {
     // eslint-disable-next-line import/no-cycle
@@ -1168,11 +1173,6 @@ async function loadLazy(doc) {
     //document.querySelector('.button.accent.light').style.backgroundColor = 'blue'
     //document.querySelector('h1').style.color = 'red';
     //document.querySelector('h1').innerHTML = 'Paragraphs are the building blocks of papers. Many students define paragraphs in terms of length: a paragraph is a group of at least five sentences, a paragraph is half a page long, etc. In reality, though, the unity and coherence of ideas among sentences is what constitutes a paragraph. A paragraph is defined as “a group of sentences or a single sentence that forms a unit” (Lunsford and Connors 116). Length and appearance do not determine whether a section in a paper is a paragraph. For instance, in some styles of writing, particularly journalistic styles, a paragraph can be just one sentence long. Ultimately, a paragraph is a sentence or group of sentences that support one main idea. In this handout, we will refer to this as the “controlling idea,” because it controls what happens in the rest of the paragraph.';
-    var sources = document.querySelector("picture").querySelectorAll("source");
-    sources.forEach(function(source) {
-    source.setAttribute("srcset", "https://img.rawpixel.com/private/static/images/website/2022-05/v944-bb-16-job598.jpg?w=1200&h=1200&dpr=1&fit=clip&crop=default&fm=jpg&q=75&vib=3&con=3&usm=15&cs=srgb&bg=F4F4F3&ixlib=js-2.2.1&s=846eb3fbf937d787169767fd6a98a4b8");
-    });
-
   }
 
 }
