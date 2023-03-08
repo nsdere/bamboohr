@@ -1316,7 +1316,7 @@ table tbody th {
 }
 
 table td {
-  color: var(--color-gray-9);
+  color: white;
 }
 
 table thead {
