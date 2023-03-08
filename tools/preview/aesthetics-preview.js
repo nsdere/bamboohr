@@ -162,7 +162,8 @@ function createKpiTableRow(fName, previewValue, liveValue) {
       backgroundColor = `rgba(200,0,0,${diff})`;
     }
   }
-  let row = `<tr style="background-color: ${backgroundColor}"><td>${fName}</td><td class="table_score_number_cell">${previewValue}</td>`;
+  // let row = `<!--<tr style="background-color: ${backgroundColor}"><td>${fName}</td><td class="table_score_number_cell">${previewValue}</td>-->`;
+  let row = `<tr><td>${fName}</td><td class="table_score_number_cell">${previewValue}</td>`;
   if(liveValue) {
     row = row.concat(`<td class="table_score_number_cell">${liveValue}</td>`);
   }
