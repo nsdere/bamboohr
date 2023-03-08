@@ -39,7 +39,7 @@ main .multi-hero-container {
 }
 
 .multi-hero-main-content h1 {
-  color: var(--color-white);
+  color: black;
   font-size: 40px;
   line-height: 48px;
   font-weight: 900;
@@ -263,7 +263,7 @@ main .multi-hero .carousel-controls {
   main .multi-hero .carousel.style-1 ~ .carousel-buttons button::after {
     border: 2px solid var(--theme-tint10);
   }
-  
+
   main .multi-hero .carousel.style-1 ~ .carousel-buttons button.selected::after {
     border-color: var(--color-white);
     background-color: var(--color-white);
