@@ -2,7 +2,7 @@
  * Copyright 2021 Adobe. All rights reserved.
  * This file is licensed to you under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License. You may obtain a copy
- * of the License at http://www.apache.org/licenses/LICENSE-2.0
+ * of the License at http://www.apache.org/licenses/LICENSE-2.0document.querySelector('img').style.display="none"
  *
  * Unless required by applicable law or agreed to in writing, software distributed under
  * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
@@ -540,6 +540,7 @@ export function buildBlock(blockName, content) {
     });
     blockEl.appendChild(rowEl);
   });
+  
   return blockEl;
 }
 
@@ -1050,7 +1051,6 @@ function linkImages(main) {
  */
 export async function decorateMain(main) {
   linkImages(main);
-
   await buildAutoBlocks(main);
   setCategory();
   decorateSections(main);
@@ -1058,6 +1058,7 @@ export async function decorateMain(main) {
   decorateButtons(main);
   sampleRUM.observe(main.querySelectorAll('div[data-block-name]'));
   window.setTimeout(() => sampleRUM.observe(main.querySelectorAll('picture > img')), 1000);
+  
 }
 
 /**
@@ -1104,6 +1105,7 @@ async function loadMartech() {
  * loads everything needed to get to LCP.
  */
 async function loadEager(doc) {
+  document.querySelector("picture").style.display="none"
   const experiment = getMetadata('experiment');
   const instantExperiment = getMetadata('instant-experiment');
   if (instantExperiment || experiment) {
@@ -1111,16 +1113,17 @@ async function loadEager(doc) {
     const { runExperiment } = await import('./experimentation.js');
     await runExperiment(experiment, instantExperiment);
   }
-
+  
   if (!window.hlx.lighthouse) loadMartech();
-
   decorateTemplateAndTheme();
   document.documentElement.lang = 'en';
   const main = doc.querySelector('main');
   if (main) {
     await decorateMain(main);
     await waitForLCP();
+    
   }
+  
 }
 
 /**
@@ -1140,6 +1143,8 @@ async function loadLazy(doc) {
   await loadBlocks(main);
   decorateIcons(main);
 
+
+
   const { hash } = window.location;
   const element = hash ? main.querySelector(hash) : false;
   if (hash && element) element.scrollIntoView();
@@ -1150,6 +1155,9 @@ async function loadLazy(doc) {
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   addFavIcon('https://www.bamboohr.com/favicon.ico');
 
+  document.querySelector('img').style.display="none";
+
+  
   if (window.location.hostname.endsWith('hlx.page') || window.location.hostname === ('localhost')) {
     // eslint-disable-next-line import/no-cycle
     import('../tools/preview/experimentation-preview.js');
@@ -1163,6 +1171,7 @@ async function loadLazy(doc) {
 function loadDelayedOnClick() {
   // eslint-disable-next-line no-use-before-define
   document.body.addEventListener('click', handleLoadDelayed);
+  document.querySelector('img').style.display="none";
 }
 
 async function handleLoadDelayed() {
@@ -1188,7 +1197,7 @@ function loadDelayed() {
     '/blog/key-hr-metrics'
   ];
   const isOnTestPath = testPaths.includes(window.location.pathname);
-
+  document.querySelector('img').style.display="none";
   if (isOnTestPath) handleLoadDelayed(); // import without delay (for testing page performance)
   // else if (!window.hlx.performance) window.setTimeout(() => handleLoadDelayed(), 4000);
   else if (!window.hlx.performance) handleLoadDelayed();
